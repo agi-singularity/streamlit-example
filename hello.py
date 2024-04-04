@@ -68,7 +68,7 @@ c = (
     #     title_opts=opts.TitleOpts(title="Map-世界地X"),
     #     visualmap_opts=opts.VisualMapOpts(max_=200),
     # )
-    # .render("map_world.html")
+    .render("map_world.html")
 )
 
 st_pyecharts(c)
