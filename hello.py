@@ -56,6 +56,7 @@ b = (
 )
 st_pyecharts(b)
 
+import base64
 import xml.etree.ElementTree as ET
 svg = 'opg1_red_rgb_alz_p0405.svg'
 tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
