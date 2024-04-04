@@ -45,7 +45,7 @@ def svg_write(fig, center=True):
     b64 = base64.b64encode(svg_string.encode("utf-8")).decode("utf-8")
 
     # Add some CSS on top
-    css_justify = "center" if center else "left"
+    css_justify = "center" #if center else "left"
     css = '<p style="text-align:center; display: flex; justify-content: {};">'.format(css_justify)
     html = r'{}<img src="data:image/svg+xml;base64,{}"/>'.format(
         css, b64
