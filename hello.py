@@ -71,6 +71,8 @@ c = (
     .render("map_world.html")
 )
 
+st_pyecharts(c)
+
 # with open("./data/countries.geo.json", "r") as f:
 #     map = st_Map("world", json.loads(f.read()),)
 # c = Map(init_opts=opts.InitOpts(bg_color="white"))
@@ -80,4 +82,4 @@ c = (
 #     title_opts=opts.TitleOpts(title="Map world"),
 #     visualmap_opts=opts.VisualMapOpts(max_=200),
 # )
-st_pyecharts(c, map=map, height=500)
+#st_pyecharts(c, map=map, height=500)
