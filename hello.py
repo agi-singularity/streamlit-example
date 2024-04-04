@@ -14,6 +14,19 @@ forums](https://discuss.streamlit.io).
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
+import base64
+import xml.etree.ElementTree as ET
+svg = 'opg1_red_rgb_alz_p0405.svg'
+tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
+root = tree.getroot()
+
+def render_svg(svg):
+    """Renders the given svg string."""
+    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
+    html = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
+    st.write(html, unsafe_allow_html=True)
+
+render_svg(svg)
 
 
 with st.echo(code_location='below'):
@@ -56,19 +69,6 @@ b = (
 )
 st_pyecharts(b)
 
-import base64
-import xml.etree.ElementTree as ET
-svg = 'opg1_red_rgb_alz_p0405.svg'
-tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
-root = tree.getroot()
-
-def render_svg(svg):
-    """Renders the given svg string."""
-    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
-    html = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
-    st.write(html, unsafe_allow_html=True)
-
-render_svg(svg)
 
 # from pyecharts import options as opts
 # from pyecharts.charts import Map
