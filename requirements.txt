@@ -5,4 +5,3 @@ pyecharts
 numpy
 scipy
 streamlit_echarts
-st_pyecharts
