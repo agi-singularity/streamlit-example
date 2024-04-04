@@ -67,7 +67,7 @@ def svg_display(svg_string):
     # css_justify = "center" if center else "left"
     # css = '<p style="text-align:center; display: flex; justify-content: {};">'.format(css_justify)
     html = r'{}<img src="data:image/svg+xml;base64,{}"/>'.format(
-        css, b64
+        b64
     )
 
     # Write the HTML
