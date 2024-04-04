@@ -37,13 +37,28 @@ with st.echo(code_location='below'):
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
 
-with open("./data/countries.geo.json", "r") as f:
-    map = st_Map("world", json.loads(f.read()),)
-c = Map(init_opts=opts.InitOpts(bg_color="white"))
-c.add("Demo", [list(z) for z in zip(Faker.country, Faker.values())], "world")
-c.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
-c.set_global_opts(
-    title_opts=opts.TitleOpts(title="Map world"),
-    visualmap_opts=opts.VisualMapOpts(max_=200),
+from pyecharts import options as opts
+from pyecharts.charts import Map
+from pyecharts.faker import Faker
+
+c = (
+    Map()
+    .add("商家A", [list(z) for z in zip(Faker.country, Faker.values())], "world")
+    .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+    .set_global_opts(
+        title_opts=opts.TitleOpts(title="Map-世界地X"),
+        visualmap_opts=opts.VisualMapOpts(max_=200),
+    )
+    .render("map_world.html")
 )
-st_pyecharts(c, map=map, height=500)
+
+# with open("./data/countries.geo.json", "r") as f:
+#     map = st_Map("world", json.loads(f.read()),)
+# c = Map(init_opts=opts.InitOpts(bg_color="white"))
+# c.add("Demo", [list(z) for z in zip(Faker.country, Faker.values())], "world")
+# c.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+# c.set_global_opts(
+#     title_opts=opts.TitleOpts(title="Map world"),
+#     visualmap_opts=opts.VisualMapOpts(max_=200),
+# )
+# st_pyecharts(c, map=map, height=500)
