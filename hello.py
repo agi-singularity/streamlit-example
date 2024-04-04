@@ -28,7 +28,7 @@ svg = 'opg1_red_rgb_alz_p0405.svg'
 tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
 root = tree.getroot()
 
-st.image(avg)
+st.image(svg)
 
 def svg_write(fig, center=True):
     """
