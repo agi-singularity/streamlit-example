@@ -61,4 +61,4 @@ c = (
 #     title_opts=opts.TitleOpts(title="Map world"),
 #     visualmap_opts=opts.VisualMapOpts(max_=200),
 # )
-# st_pyecharts(c, map=map, height=500)
+st_pyecharts(c, map=map, height=500)
