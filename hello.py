@@ -28,6 +28,8 @@ svg = 'opg1_red_rgb_alz_p0405.svg'
 tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
 root = tree.getroot()
 
+st.image(avg)
+
 def svg_write(fig, center=True):
     """
     Renders a matplotlib figure object to SVG.
