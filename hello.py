@@ -56,30 +56,42 @@ b = (
 )
 st_pyecharts(b)
 
-from pyecharts import options as opts
-from pyecharts.charts import Map
-from pyecharts.faker import Faker
+import xml.etree.ElementTree as ET
+tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
+root = tree.getroot()
 
-c = (
-    Map()
-    .add("A", [list(z) for z in zip(Faker.country, Faker.values())], "world")
-    .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
-    .set_global_opts(
-        title_opts=opts.TitleOpts(title="Map-X"),
-        visualmap_opts=opts.VisualMapOpts(max_=200),
-    )
-    .render("map_world.html")
-)
+def render_svg(svg):
+    """Renders the given svg string."""
+    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
+    html = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
+    st.write(html, unsafe_allow_html=True)
 
-st_pyecharts(c)
+render_svg(tree)
 
-# with open("./data/countries.geo.json", "r") as f:
-#     map = st_Map("world", json.loads(f.read()),)
-# c = Map(init_opts=opts.InitOpts(bg_color="white"))
-# c.add("Demo", [list(z) for z in zip(Faker.country, Faker.values())], "world")
-# c.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
-# c.set_global_opts(
-#     title_opts=opts.TitleOpts(title="Map world"),
-#     visualmap_opts=opts.VisualMapOpts(max_=200),
+# from pyecharts import options as opts
+# from pyecharts.charts import Map
+# from pyecharts.faker import Faker
+
+# c = (
+#     Map()
+#     .add("A", [list(z) for z in zip(Faker.country, Faker.values())], "world")
+#     .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+#     .set_global_opts(
+#         title_opts=opts.TitleOpts(title="Map-X"),
+#         visualmap_opts=opts.VisualMapOpts(max_=200),
+#     )
+#     .render("map_world.html")
 # )
-#st_pyecharts(c, map=map, height=500)
+
+# st_pyecharts(c)
+
+# # with open("./data/countries.geo.json", "r") as f:
+# #     map = st_Map("world", json.loads(f.read()),)
+# # c = Map(init_opts=opts.InitOpts(bg_color="white"))
+# # c.add("Demo", [list(z) for z in zip(Faker.country, Faker.values())], "world")
+# # c.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+# # c.set_global_opts(
+# #     title_opts=opts.TitleOpts(title="Map world"),
+# #     visualmap_opts=opts.VisualMapOpts(max_=200),
+# # )
+# #st_pyecharts(c, map=map, height=500)
