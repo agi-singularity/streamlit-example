@@ -29,7 +29,7 @@ tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
 root = tree.getroot()
 
 #st.image(svg)
-st.image(svg, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+st.image(svg, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="JPEG")
 
 def svg_write(fig, center=True):
     """
