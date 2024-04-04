@@ -57,6 +57,7 @@ b = (
 st_pyecharts(b)
 
 import xml.etree.ElementTree as ET
+svg = 'opg1_red_rgb_alz_p0405.svg'
 tree = ET.parse('opg1_red_rgb_alz_p0405.svg')
 root = tree.getroot()
 
@@ -66,7 +67,7 @@ def render_svg(svg):
     html = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
     st.write(html, unsafe_allow_html=True)
 
-render_svg(tree)
+render_svg(svg)
 
 # from pyecharts import options as opts
 # from pyecharts.charts import Map
