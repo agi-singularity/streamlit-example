@@ -37,32 +37,13 @@ with st.echo(code_location='below'):
         .mark_circle(color='#0068c9', opacity=0.5)
         .encode(x='x:Q', y='y:Q'))
 
-  option = {
-  title: [
-    {
-      text: 'Tangential Polar Bar Label Position (middle)'
-    }
-  ],
-  polar: {
-    radius: [30, '80%']
-  },
-  angleAxis: {
-    max: 4,
-    startAngle: 75
-  },
-  radiusAxis: {
-    type: 'category',
-    data: ['a', 'b', 'c', 'd']
-  },
-  tooltip: {},
-  series: {
-    type: 'bar',
-    data: [2, 1.2, 2.4, 3.6],
-    coordinateSystem: 'polar',
-    label: {
-      show: true,
-      position: 'middle',
-      formatter: '{b}: {c}'
-    }
-  }
-};
+with open("./data/countries.geo.json", "r") as f:
+    map = st_Map("world", json.loads(f.read()),)
+c = Map(init_opts=opts.InitOpts(bg_color="white"))
+c.add("Demo", [list(z) for z in zip(Faker.country, Faker.values())], "world")
+c.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+c.set_global_opts(
+    title_opts=opts.TitleOpts(title="Map world"),
+    visualmap_opts=opts.VisualMapOpts(max_=200),
+)
+st_pyecharts(c, map=map, height=500)
